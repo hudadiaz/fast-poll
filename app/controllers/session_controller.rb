@@ -1,16 +1,16 @@
 class SessionController < ApplicationController
+  before_action :authenticate_user!, only: [:destroy]
+
   def new
   end
 
   def create
-    reset_session
     if user = User.find_by(login_params)
       session[:uuid] = user.uuid
-      redirect_to root_path
     else
       current_user(true)
-      redirect_to user_path
     end
+    redirect_to session[:continue_url] ||= root_path
   end
 
   def destroy

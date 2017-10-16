@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authenticate_user!
-    current_user(true) unless current_user
+    unless current_user
+      session[:continue_url] = request.original_url
+      redirect_to login_path
+    end
   end
 end
