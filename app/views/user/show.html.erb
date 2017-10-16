@@ -1,0 +1,30 @@
+<main class='py-3'>
+  <% if current_user %>
+    <h4>Secret Key</h4>
+    <p>
+      <pre><%= current_user.secret %></pre>
+      Use this to login as this user.
+      Only accessible if you are logged in.
+      Anyone with this key will be able to login and reset the key.
+    </p>
+    <p><%= link_to 'Reset', user_reset_secret_path, method: :post, class: 'btn btn-warning', data: { confirm: 'Reset Secret Key?' } %></p>
+
+    <h4>Merge user</h4>
+    <p>
+      Merge another user using the <code>Secret Key</code>
+      <%= form_tag user_merge_path, method: :post do %>
+        <div class='form-group'>
+          <%= text_field_tag 'user[secret]', nil, class: 'form-control', placeholder: 'Secret Key', autocomplete: 'off' %>
+        </div>
+
+        <div class='actions'>
+          <%= submit_tag 'Merge user', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      Please <%= link_to 'login', login_path %> to continue
+    </p>
+  <% end %>
+</main>

@@ -1,0 +1,9 @@
+<%= simple_form_for(question, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.input :question %>
+  <% f.simple_fields_for :choices do |choice| %>
+    <%= render 'choice_fields', f: choice %>
+  <% end %>
+  <div class="add-choices"><%= link_to_add_association 'add choice', f, :choices %></div>
+  <%= f.input :mcq %>
+  <%= f.button :submit %>
+<% end %>

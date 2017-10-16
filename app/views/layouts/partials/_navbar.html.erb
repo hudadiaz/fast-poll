@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+  <div class="container">
+    <%= link_to t('app.name'), root_path, class: 'navbar-brand' %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <%= active_link_to 'Questions', questions_path, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item' %>
+        <%= active_link_to 'Me', user_path, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item' %>
+      </ul>
+    </div>
+    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+      <%= session_link %>
+    </ul>
+  </div>
+</nav>

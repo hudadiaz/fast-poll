@@ -1,0 +1,19 @@
+<main class="py-3">
+  <p id="notice"><%= notice %></p>
+
+  <h1><%= @question.question %></h1>
+
+  <div class="choices">
+    <%= form_for [:answer, @question], method: :post do |f| -%>
+      <% @question.choices.each do |choice| %>
+        <div class="choice">
+          <label>
+            <%= build_option choice, @question.mcq %>
+            <%= choice.choice %>
+          </label>
+        </div>
+      <% end %>
+      <%= f.submit 'Submit', class: 'btn btn-success' %>
+    <% end -%>
+  </div>
+</main>
