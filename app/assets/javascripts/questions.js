@@ -5,12 +5,6 @@ $(document).on('turbolinks:load', function() {
       e.preventDefault();
     }
   });
-  $('#new_question').on('cocoon:before-insert', function(e) {
-    var choices = $(this).find('.nested-fields')
-    if (choices.length === 2) {
-      e.preventDefault();
-    }
-  });
   $('#new_question').on('cocoon:after-insert', function(e, elm) {
     $(elm.find('input')[0]).focus()
   });
