@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'questions#new'
   
   resources :questions, path: :q do
@@ -6,6 +7,8 @@ Rails.application.routes.draw do
       post 'answer', to: 'answer#create'
     end
   end
+
+  get :responses, to: 'responses#index'
 
   get 'user', to: 'user#show'
   post 'user/merge', to: 'user#merge'

@@ -1,9 +1,28 @@
-<%= simple_form_for(question, html: { class: 'form-horizontal' }) do |f| %>
-  <%= f.input :question %>
-  <% f.simple_fields_for :choices do |choice| %>
-    <%= render 'choice_fields', f: choice %>
-  <% end %>
-  <div class="add-choices"><%= link_to_add_association 'add choice', f, :choices %></div>
-  <%= f.input :mcq %>
-  <%= f.button :submit %>
+<%= form_for(question, html: { class: 'form-horizontal py-3' }) do |f| %>
+  <div class="form-group">
+    <%= f.label :question, class: 'sr-only' %>
+    <%= f.text_area :question, rows: 3, placeholder: t('forms.question.question'), class: 'form-control' %>
+  </div>
+  <hr>
+
+  <div class="form-group">
+    <%= f.label :choices, class: 'sr-only' %>
+    <%= f.fields_for :choices do |choice| %>
+      <%= render 'choice_fields', f: choice %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association t('forms.question.add_choice'), f, :choices, class: 'btn border border-secondary w-100 text-left text-secondary' %>
+    </div>
+  </div>
+
+  <div class="checkbox">
+    <label class="custom-control custom-checkbox">
+      <%= f.check_box :mcq, class: "custom-control-input" %>
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description"><%= t('forms.question.mcq') %></span>
+    </label>
+  </div>
+  
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>
+

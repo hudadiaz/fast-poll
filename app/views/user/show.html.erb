@@ -1,30 +1,20 @@
 <main class='py-3'>
-  <% if current_user %>
-    <h4>Secret Key</h4>
-    <p>
-      <pre><%= current_user.secret %></pre>
-      Use this to login as this user.
-      Only accessible if you are logged in.
-      Anyone with this key will be able to login and reset the key.
-    </p>
-    <p><%= link_to 'Reset', user_reset_secret_path, method: :post, class: 'btn btn-warning', data: { confirm: 'Reset Secret Key?' } %></p>
+  <h4><%= t('forms.user.secret') %></h4>
+  <p><pre><%= current_user.secret %></pre></p>
+  <p><%= t('hints.user.secret') %></p>
+  <p><%= link_to t('actions.reset'), user_reset_secret_path, method: :post, class: 'btn btn-warning', data: { confirm: t('forms.user.reset_confirmation') } %></p>
 
-    <h4>Merge user</h4>
-    <p>
-      Merge another user using the <code>Secret Key</code>
-      <%= form_tag user_merge_path, method: :post do %>
-        <div class='form-group'>
-          <%= text_field_tag 'user[secret]', nil, class: 'form-control', placeholder: 'Secret Key', autocomplete: 'off' %>
-        </div>
+  <h4>Merge user</h4>
+  <p>
+    <%= t('hints.user.merge_user', secret_key: "<code>#{t('forms.user.secret')}</code>").html_safe %>
+    <%= form_tag user_merge_path, method: :post do %>
+      <div class='form-group'>
+        <%= text_field_tag 'user[secret]', nil, class: 'form-control', placeholder: t('forms.user.secret'), autocomplete: 'off' %>
+      </div>
 
-        <div class='actions'>
-          <%= submit_tag 'Merge user', class: 'btn btn-primary' %>
-        </div>
-      <% end %>
-    </p>
-  <% else %>
-    <p>
-      Please <%= link_to 'login', login_path %> to continue
-    </p>
-  <% end %>
+      <div class='actions'>
+        <%= submit_tag t('actions.merge_user'), class: 'btn btn-info' %>
+      </div>
+    <% end %>
+  </p>
 </main>

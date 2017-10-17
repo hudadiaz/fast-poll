@@ -11,12 +11,13 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @question = Question.find params[:id]
+    @question = Question.includes(choices: :answers).find params[:id]
   end
 
   # GET /questions/new
   def new
     @question = Question.new
+    2.times { @question.choices.build }
   end
 
   # GET /questions/1/edit
@@ -33,6 +34,7 @@ class QuestionsController < ApplicationController
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else
+        return render json: @question.errors
         format.html { render :new }
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end

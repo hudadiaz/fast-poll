@@ -1,19 +1,14 @@
 <main class="py-3">
-  <p id="notice"><%= notice %></p>
-
   <h1><%= @question.question %></h1>
 
-  <div class="choices">
-    <%= form_for [:answer, @question], method: :post do |f| -%>
-      <% @question.choices.each do |choice| %>
-        <div class="choice">
-          <label>
-            <%= build_option choice, @question.mcq %>
-            <%= choice.choice %>
-          </label>
-        </div>
-      <% end %>
-      <%= f.submit 'Submit', class: 'btn btn-success' %>
-    <% end -%>
+  <div class="answers py-2">
+    <% if show_result? @question %>
+      <%= render 'result', question: @question %>
+    <% else %>
+      <%= render 'answer', question: @question %>
+    <% end %>
+    <p>
+      <small><%= @question.respondents.size %> <%= Answer.model_name.human(count: @question.respondents.size).downcase %></small>
+    </p>
   </div>
 </main>

@@ -1,0 +1,11 @@
+<main class="py-3">
+  <h1><%= Answer.model_name.human count: 0 %></h1>
+  <div class="py-2">
+    <% if @questions.size > 0 %>
+      <p>Links to <%= Question.model_name.human count: 0 %> you responded previously</p>
+      <%= render 'questions/questions', questions: @questions %>
+    <% else %>
+      <p>You have not responded to any poll</p>
+    <% end %>
+  </div>
+</main>

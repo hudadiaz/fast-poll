@@ -22,3 +22,34 @@
 en:
   app:
     name: FastPoll
+  activerecord:
+    models:
+      question:
+        one: Poll
+        other: Polls
+      answer:
+        one: Response
+        other: Responses
+  forms:
+    question:
+      question: Question
+      choice: Answer
+      add_choice: Add answer
+      remove_choice: Remove answer
+      mcq: Multiple Answers
+      submit: Create Poll
+    user:
+      secret: Secret Key
+      reset_confirmation: Reset Secret Key?
+  actions:
+    reset: Reset
+    login: Login
+    logout: Logout
+    merge_user: Merge
+  hints:
+    user:
+      secret: >
+          Use this to login as this user.
+          Only accessible if you are logged in.
+          Anyone with this key will be able to login and reset the key.
+      merge_user: Merge another user using the %{secret_key}

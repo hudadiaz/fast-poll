@@ -1,0 +1,8 @@
+<% questions.each do |question| %>
+  <div class="my-1">
+    <%= link_to question_path(question), class: 'btn btn-secondary w-100 text-left' do %>
+      <span class="badge badge-dark"><%= question.answers.count(:user) %></span>
+      <%= question.question %>
+    <% end %>
+  </div>
+<% end %>

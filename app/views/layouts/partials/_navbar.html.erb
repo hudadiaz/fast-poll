@@ -8,8 +8,9 @@
     <% if current_user %>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <%= active_link_to 'Questions', questions_path, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item' %>
-          <%= active_link_to 'Me', user_path, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item' %>
+          <%= active_link_to Question.model_name.human(count: 0), questions_path, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item' %>
+          <%= active_link_to Answer.model_name.human(count: 0), responses_path, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item' %>
+          <%= active_link_to User.model_name.human, user_path, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item' %>
         </ul>
       </div>
     <% end %>

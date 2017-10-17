@@ -1,14 +1,13 @@
 <main class="py-3">
-  <h1>Login</h1>
-  <p>Log in with a <code>Secret Key</code> or we'll create a new account for you.</p>
+  <p>Log in with a <code><%= t('forms.user.secret') %></code> or we'll create a new account for you.</p>
 
   <%= form_tag session_path, method: :post do %>
     <div class='form-group'>
-      <%= text_field_tag 'user[secret]', nil, class: 'form-control', placeholder: 'Secret Key', autocomplete: 'off' %>
+      <%= text_field_tag 'user[secret]', nil, class: 'form-control', placeholder: t('forms.user.secret'), autocomplete: 'off' %>
     </div>
 
     <div class='actions'>
-      <%= submit_tag 'Login', class: 'btn btn-primary' %>
+      <%= submit_tag t('actions.login'), class: 'btn btn-primary' %>
     </div>
   <% end %>
 </main>

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :questions
   has_many :answers
+  has_many :answered_questions, through: :answers, source: :question
 
   before_validation :generate_secret
   validates_presence_of :uuid, :secret
@@ -17,13 +18,13 @@ class User < ApplicationRecord
     end
   end
 
-  def answered choice
-    Answer.find_by user: self, choice: choice
+  def answered question
+    Answer.find_by user: self, question: question
   end
 
   private
 
   def generate_secret
-    self.secret = SecureRandom.base64(64)
+    self.secret = "#{id}#{SecureRandom.base64(32)}"
   end
 end
