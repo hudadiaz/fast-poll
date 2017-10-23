@@ -2,7 +2,10 @@ class Choice < ApplicationRecord
   belongs_to :question
   has_many :answers
 
-  validates_presence_of :choice
+  validates :choice,
+    presence: true,
+    length: {maximum: 60},
+    allow_nil: false
 
   def percentage
     return 0 unless answers.present?

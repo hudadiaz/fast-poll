@@ -11,7 +11,11 @@ class Question < ApplicationRecord
 
   accepts_nested_attributes_for :choices, reject_if: :all_blank, allow_destroy: true
 
-  validates_presence_of :user, :question
+  validates_presence_of :user
+  validates :question,
+    presence: true,
+    length: {maximum: 120},
+    allow_nil: false
 
   def self.random_new
     if id = self.reusable.select(:id).map(&:id).shuffle.first

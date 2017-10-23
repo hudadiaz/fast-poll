@@ -1,7 +1,7 @@
 <%= form_for(question, html: { class: 'form-horizontal py-3' }) do |f| %>
   <div class="form-group">
     <%= f.label :question, class: 'sr-only' %>
-    <%= f.text_area :question, rows: 3, placeholder: t('forms.question.question'), class: 'form-control' %>
+    <%= f.text_area :question, rows: 2, placeholder: t('forms.question.question'), class: 'form-control', maxlength: 120, required: true %>
   </div>
   <hr>
 
