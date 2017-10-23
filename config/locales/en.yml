@@ -23,6 +23,7 @@ en:
   app:
     name: FastPoll
     name_html: Fast<strong>Poll</strong>
+    description: Create and share poll quickly with FastPoll
   activerecord:
     models:
       question:

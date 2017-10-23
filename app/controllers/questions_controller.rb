@@ -12,6 +12,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
     @question = Question.includes(choices: :answers).friendly.find params[:id]
+    set_meta_tags description: @question.choices.map(&:choice).to_sentence(two_words_connector: ' or ', last_word_connector: ' or ')
   end
 
   # GET /questions/new
