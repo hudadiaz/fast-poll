@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
   def intialize_meta_tags
     set_meta_tags site: I18n.t('app.name'),
       reverse: true,
+      separator: '-',
       description: I18n.t('app.description'),
       image_src: '/logo.png',
       og: {
@@ -28,6 +29,7 @@ class ApplicationController < ActionController::Base
         description: :description
       },
       twitter: {
+        card: 'summary',
         image: { _: :image_src },
         title: :title,
         description: :description
