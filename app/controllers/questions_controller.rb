@@ -16,8 +16,12 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
-    @question = Question.new
-    2.times { @question.choices.build }
+    if params.has_key?(:random) && params[:random]
+      @question = Question.random_new
+    else
+      @question = Question.new
+      2.times { @question.choices.build }
+    end
   end
 
   # GET /questions/1/edit

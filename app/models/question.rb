@@ -6,4 +6,21 @@ class Question < ApplicationRecord
   accepts_nested_attributes_for :choices, reject_if: :all_blank, allow_destroy: true
 
   validates_presence_of :user, :question
+
+  def self.random_new
+    if id = self.select(:id).where(allow_reuse: true).map(&:id).shuffle.first
+      p id
+      template = self.find id
+      new_question = self.new(
+        question: template.question,
+        mcq: template.mcq
+      )
+      template.choices.each do |template_choice|
+        new_question.choices.build(choice: template_choice.choice)
+      end
+      new_question
+    else
+      self.new
+    end
+  end
 end
