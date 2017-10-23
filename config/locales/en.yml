@@ -22,6 +22,7 @@
 en:
   app:
     name: FastPoll
+    name_html: Fast<strong>Poll</strong>
   activerecord:
     models:
       question:
@@ -54,3 +55,5 @@ en:
           Only accessible if you are logged in.
           Anyone with this key will be able to login and reset the key.
       merge_user: Merge another user using the %{secret_key}
+      logout: >
+          You will not be able to log in as this user if you do not save the Secret Key
