@@ -18,9 +18,10 @@ class Question < ApplicationRecord
       template.choices.each do |template_choice|
         new_question.choices.build(choice: template_choice.choice)
       end
-      new_question
     else
-      self.new
+      new_question = self.new
+      2.times { new_question.choices.build }
     end
+    new_question
   end
 end
