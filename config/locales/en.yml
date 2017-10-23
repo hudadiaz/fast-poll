@@ -37,6 +37,7 @@ en:
       add_choice: Add answer
       remove_choice: Remove answer
       mcq: Multiple Answers
+      allow_reuse: Allow question to be reused
       submit: Create Poll
     user:
       secret: Secret Key

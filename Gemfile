@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.2'
 
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'simple_form'
-gem 'cocoon', git: 'git@github.com:nathanvda/cocoon'
+gem 'cocoon'
 gem 'active_link_to'
 
 gem 'jquery-rails'

@@ -22,6 +22,14 @@
       <span class="custom-control-description"><%= t('forms.question.mcq') %></span>
     </label>
   </div>
+
+  <div class="checkbox">
+    <label class="custom-control custom-checkbox">
+      <%= f.check_box :allow_reuse, class: "custom-control-input" %>
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description"><%= t('forms.question.allow_reuse') %></span>
+    </label>
+  </div>
   
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
