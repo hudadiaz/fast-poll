@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
       reverse: true,
       separator: '-',
       description: I18n.t('app.description'),
-      image_src: '/logo.png',
+      image_src: "#{root_url}logo.png",
       og: {
         site_name: :site,
         image: { _: :image_src },
