@@ -32,6 +32,8 @@
   </div>
   
   <%= f.submit class: 'btn btn-primary' %>
-  <%= link_to 'Random', new_question_path(random: true), class: 'btn btn-secondary' %>
+  <% if Question.reusable.size > 2  %>
+    <%= link_to 'Random', new_question_path(random: true), class: 'btn btn-secondary' %>
+  <% end %>
 <% end %>
 

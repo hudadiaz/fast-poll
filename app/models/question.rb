@@ -3,12 +3,15 @@ class Question < ApplicationRecord
   has_many :answers
   has_many :choices, inverse_of: :question
   has_many :respondents, -> { distinct }, through: :answers, source: :user
+
+  scope :reusable, -> { where(allow_reuse: true) }
+
   accepts_nested_attributes_for :choices, reject_if: :all_blank, allow_destroy: true
 
   validates_presence_of :user, :question
 
   def self.random_new
-    if id = self.select(:id).where(allow_reuse: true).map(&:id).shuffle.first
+    if id = self.reusable.select(:id).map(&:id).shuffle.first
       p id
       template = self.find id
       new_question = self.new(
