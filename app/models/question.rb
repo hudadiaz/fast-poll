@@ -1,4 +1,7 @@
 class Question < ApplicationRecord
+  extend FriendlyId
+  friendly_id :question, use: :slugged
+
   belongs_to :user
   has_many :answers
   has_many :choices, inverse_of: :question

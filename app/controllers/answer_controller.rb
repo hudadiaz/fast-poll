@@ -1,6 +1,6 @@
 class AnswerController < ApplicationController
   def create
-    question = Question.find params[:id]
+    question = Question.friendly.find params[:id]
     current_user(true).answer_question(question, answer_params[:answer])
     redirect_to question
   end

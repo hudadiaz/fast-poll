@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @question = Question.includes(choices: :answers).find params[:id]
+    @question = Question.includes(choices: :answers).friendly.find params[:id]
   end
 
   # GET /questions/new
@@ -26,6 +26,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    head 501
   end
 
   # POST /questions
@@ -72,7 +73,7 @@ class QuestionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
-      @question = current_user.questions.find(params[:id])
+      @question = current_user.questions.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
