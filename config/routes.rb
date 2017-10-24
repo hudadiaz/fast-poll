@@ -14,9 +14,7 @@ Rails.application.routes.draw do
   post 'user/merge', to: 'user#merge'
   post 'user/reset-secret', to: 'user#reset_secret'
 
-  scope :session do
-    get '/new', to: 'session#new', as: :login
-    post '/', to: 'session#create', as: :session
-    delete '/', to: 'session#destroy', as: :logout
-  end
+  get 'login', to: 'session#new', as: :login
+  post 'login', to: 'session#create', as: :session
+  delete 'logout', to: 'session#destroy', as: :logout
 end

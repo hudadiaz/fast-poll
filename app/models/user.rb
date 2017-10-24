@@ -25,6 +25,6 @@ class User < ApplicationRecord
   private
 
   def generate_secret
-    self.secret = "#{id}#{SecureRandom.base64(32)}"
+    self.secret = "#{uuid.split('-').last}#{SecureRandom.urlsafe_base64}"
   end
 end

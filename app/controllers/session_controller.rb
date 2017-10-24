@@ -5,8 +5,12 @@ class SessionController < ApplicationController
   end
 
   def create
-    if user = User.find_by(login_params)
-      session[:uuid] = user.uuid
+    if login_params[:secret].present?
+      if user = User.find_by(login_params)
+        session[:uuid] = user.uuid
+      else
+        return redirect_to login_path
+      end
     else
       current_user(true)
     end
