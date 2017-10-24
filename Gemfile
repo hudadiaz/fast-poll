@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.2'
 
 gem 'friendly_id', '~> 5.1.0'
 gem 'meta-tags'
+gem 'rack-tracker'
 
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'simple_form'
