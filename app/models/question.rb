@@ -34,4 +34,12 @@ class Question < ApplicationRecord
     end
     new_question
   end
+
+  def expired?
+    true if expiry && expires_at < Time.now
+  end
+
+  def expires_at
+    expiry.midnight+1.day-1.second
+  end
 end

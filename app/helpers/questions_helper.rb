@@ -14,7 +14,9 @@ module QuestionsHelper
   end
 
   def show_result? question
-    current_user && current_user.answered(question) || current_user == question.user
+    question.expired? ||
+    current_user && current_user.answered(question) ||
+    current_user == question.user
   end
 
   def expiry_at_options

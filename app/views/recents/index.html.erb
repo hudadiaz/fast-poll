@@ -1,0 +1,10 @@
+<main class="py-3">
+  <h1><%= title "Recent #{Question.model_name.human count: 0}" %></h1>
+  <div class="py-2">
+    <% if @questions.size > 0 %>
+      <%= render 'questions/questions', questions: @questions %>
+    <% else %>
+      <p>Apparently, there is nothing...</p>
+    <% end %>
+  </div>
+</main>

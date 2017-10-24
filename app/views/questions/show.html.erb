@@ -4,11 +4,11 @@
   <div class="answers py-2">
     <% if show_result? @question %>
       <%= render 'result', question: @question %>
+      <p>
+        <small><%= @question.respondents.size %> <%= Answer.model_name.human(count: @question.respondents.size).downcase %></small>
+      </p>
     <% else %>
       <%= render 'answer', question: @question %>
     <% end %>
-    <p>
-      <small><%= @question.respondents.size %> <%= Answer.model_name.human(count: @question.respondents.size).downcase %></small>
-    </p>
   </div>
 </main>

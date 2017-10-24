@@ -41,6 +41,7 @@ en:
       mcq: Multiple Answers
       allow_reuse: Allow question to be reused
       submit: Create Poll
+      expiry: End poll date
     user:
       secret: Secret Key
       reset_confirmation: Reset Secret Key?

@@ -1,18 +1,23 @@
 <%= form_for(question, html: { class: 'form-horizontal py-3' }) do |f| %>
   <div class="form-group">
-    <%= f.label :question, class: 'sr-only' %>
+    <%= f.label :question, t('forms.question.question'), class: 'sr-only' %>
     <%= f.text_area :question, rows: 2, placeholder: t('forms.question.question'), class: 'form-control', maxlength: 120, required: true %>
   </div>
   <hr>
 
   <div class="form-group">
-    <%= f.label :choices, class: 'sr-only' %>
+    <%= f.label :choices, t('forms.question.add_choice'), class: 'sr-only' %>
     <%= f.fields_for :choices do |choice| %>
       <%= render 'choice_fields', f: choice %>
     <% end %>
     <div class="links">
       <%= link_to_add_association t('forms.question.add_choice'), f, :choices, class: 'btn border border-secondary w-100 text-left text-secondary' %>
     </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :expiry, t('forms.question.expiry'), class: 'sr-only' %>
+    <%= f.text_field :expiry, placeholder: t('forms.question.expiry'), class: 'form-control', min: Date.today, onfocus: "(this.type='date')", onblur: "(this.type='text')" %>
   </div>
 
   <div class="checkbox">
