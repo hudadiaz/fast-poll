@@ -8,15 +8,11 @@ module QuestionsHelper
         value: choice.id, class: 'custom-control-input', required: true
     end
   end
-
-  def build_progress(choice)
-    "<div class='percentage bg-warning' style='width: #{choice.percentage}%'></div>".html_safe
-  end
-
+  
   def show_result? question
+    current_user == question.user ||
     question.expired? ||
-    current_user && current_user.answered(question) ||
-    current_user == question.user
+    current_user.present? && current_user.answered?(question)
   end
 
   def expiry_at_options

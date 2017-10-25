@@ -1,7 +1,0 @@
-<% @question.choices.each do |choice| %>
-  <div class="answer border border-secondary rounded py-2 px-3 my-1">
-    <strong><%= choice.percentage %>%</strong>&nbsp;
-    <%= choice.choice %>
-    <%= build_progress choice %>
-  </div>
-<% end %>

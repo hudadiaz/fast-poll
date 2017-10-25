@@ -9,7 +9,7 @@ class Choice < ApplicationRecord
 
   def percentage
     return 0 unless answers.present?
-    total = Answer.where(question: question).size
-    answers.size * 100.0 / total
+    total = question.answers.size
+    (answers.size * 100.0 / total).round(1)
   end
 end

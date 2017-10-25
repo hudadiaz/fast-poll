@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
     elsif force
       user = User.create!
       session[:jwt] = user.jwt_token
+      user
     end
   rescue JWT::VerificationError
     session[:jwt] = nil

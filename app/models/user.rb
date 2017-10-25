@@ -31,8 +31,8 @@ class User < ApplicationRecord
     end
   end
 
-  def answered question
-    Answer.find_by user: self, question: question
+  def answered? question
+    true if (answered_questions.find question.id).present?
   end
 
   def reset_secret

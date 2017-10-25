@@ -2,13 +2,17 @@
   <h2><%= title @question.question %></h2>
 
   <div class="answers py-2">
-    <% if show_result? @question %>
-      <%= render 'result', question: @question %>
-      <p>
-        <small><%= @question.respondents.size %> <%= Answer.model_name.human(count: @question.respondents.size).downcase %></small>
-      </p>
-    <% else %>
-      <%= render 'answer', question: @question %>
-    <% end %>
+    <%= form_for [:answer, @question], method: :post do |f| -%>
+      <% @question.choices.each do |choice| %>
+        <div class="choice answer border border-secondary rounded p-2 my-1">
+          <label class="custom-control m-0 w-100 h-100 <%= "custom-#{@question.mcq ? 'checkbox' : 'radio'}" %>">
+            <%= build_option choice, @question.mcq %>
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description"><%= choice.choice %></span>
+          </label>
+        </div>
+      <% end %>
+      <%= f.submit 'Submit', class: 'btn btn-success my-1' %>
+    <% end -%>
   </div>
 </main>

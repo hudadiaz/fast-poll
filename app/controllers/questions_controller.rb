@@ -12,7 +12,12 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
     @question = Question.includes(choices: :answers).friendly.find params[:id]
-    set_meta_tags description: @question.choices.map(&:choice).to_sentence(two_words_connector: ' or ', last_word_connector: ' or ')
+    @respondents_size = @question.respondents.count
+    @choices = @question.choices.map do |choice|
+      [choice.choice, choice.percentage]
+    end
+    set_meta_tags description: @choices.map(&:first).to_sentence(two_words_connector: ' or ', last_word_connector: ' or ')
+    render template: 'questions/show_result' if view_context.show_result? @question
   end
 
   # GET /questions/new
