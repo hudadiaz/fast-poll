@@ -1,7 +1,7 @@
 <div class="form-group nested-fields">
   <%= f.label :choice, t('forms.question.choice'), class: 'sr-only' %>
   <div class="input-group field">
-    <%= f.text_field :choice, placeholder: t('forms.question.choice'), class: 'form-control', maxlength: 60, required: true %>
+    <%= f.text_field :choice, placeholder: t('forms.question.choice'), class: 'form-control', maxlength: 40, required: true %>
     <div class="input-group-addon danger">
       <%= link_to_remove_association '&times;'.html_safe, f, class: "close", aria: { label: "Close" } %>
     </div>

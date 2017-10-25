@@ -4,7 +4,7 @@ class Choice < ApplicationRecord
 
   validates :choice,
     presence: true,
-    length: {maximum: 60},
+    length: {maximum: 40},
     allow_nil: false
 
   def percentage
