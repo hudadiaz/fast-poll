@@ -4,8 +4,14 @@ class UserController < ApplicationController
   def show
   end
 
+  def show_secret
+    @secret = current_user.secret
+  end
+
   def reset_secret
-    current_user.save
+    user = current_user
+    user.reset_secret
+    session[:jwt] = user.jwt_token
     redirect_to user_path
   end
 

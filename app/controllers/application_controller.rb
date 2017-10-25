@@ -3,9 +3,15 @@ class ApplicationController < ActionController::Base
   before_action :intialize_meta_tags
 
   def current_user force=false
-    if session[:uuid] || force
-      User.find_or_create_by(uuid: session[:uuid] ||= SecureRandom.uuid)
+    if session[:jwt]
+      User.from_jwt_token(session[:jwt])
+    elsif force
+      user = User.create!
+      session[:jwt] = user.jwt_token
     end
+  rescue JWT::VerificationError
+    session[:jwt] = nil
+    nil
   end
   helper_method :current_user
 

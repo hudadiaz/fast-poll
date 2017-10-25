@@ -2,7 +2,12 @@
   <h1><%= title "Me" %></h1>
   <h4><%= t('forms.user.secret') %></h4>
   <div class="form-group">
-    <input type="text" value="<%= current_user.secret %>" class="form-control" onclick="this.select();" readonly>
+    <div class="input-group field">
+      <input id="secretKey" type="text" class="form-control" onclick="this.select();" readonly>
+      <div class="input-group-addon danger">
+        <%= link_to 'SHOW', user_show_secret_path, method: :post, remote: true %>
+      </div>
+    </div>
     <%= t('hints.user.secret') %>
   </div>
   <p><%= link_to t('actions.reset'), user_reset_secret_path, method: :post, class: 'btn btn-warning', data: { confirm: t('forms.user.reset_confirmation') } %></p>

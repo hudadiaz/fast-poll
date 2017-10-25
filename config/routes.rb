@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get :responses, to: 'responses#index'
 
   get 'user', to: 'user#show'
+  post 'user/show-secret', to: 'user#show_secret'
   post 'user/merge', to: 'user#merge'
   post 'user/reset-secret', to: 'user#reset_secret'
 

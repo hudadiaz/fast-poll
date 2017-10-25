@@ -7,7 +7,7 @@ class SessionController < ApplicationController
   def create
     if login_params[:secret].present?
       if user = User.find_by(login_params)
-        session[:uuid] = user.uuid
+        session[:jwt] = user.jwt_token
       else
         return redirect_to login_path
       end
