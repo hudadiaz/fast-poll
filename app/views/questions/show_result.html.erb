@@ -1,0 +1,16 @@
+<main class="py-3">
+  <h2><%= title @question.question %></h2>
+
+  <div class="answers py-2">
+    <% @choices.each do |choice| %>
+      <div class="answer border border-secondary rounded py-2 px-3 my-1">
+        <strong><%= choice.last %>%</strong>&nbsp;
+        <%= choice.first %>
+        <div class='percentage bg-warning' style='width: <%= choice.last %>%'></div>
+      </div>
+    <% end %>
+    <p>
+      <small><%= @respondents_size %> <%= Answer.model_name.human(count: @respondents_size).downcase %></small>
+    </p>
+  </div>
+</main>
