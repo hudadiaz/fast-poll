@@ -6,8 +6,9 @@
 #
 default: &default
   adapter: postgresql
-  username: <%= ENV["POSTGRES_USERNAME"] %>
-  password: <%= ENV["POSTGRES_PASSWORD"] %>
+  username: <%= ENV["POSTGRES_USERNAME"] || 'postgres' %>
+  password: <%= ENV["POSTGRES_PASSWORD"] || '' %>
+  pool: 5
 
 development:
   <<: *default
