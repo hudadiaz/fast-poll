@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def current_user force=false
     if session[:jwt]
-      User.from_jwt_token(session[:jwt])
+      User.from_jwt_token(session[:jwt]) || session[:jwt] = nil
     elsif force
       user = User.create!
       session[:jwt] = user.jwt_token
