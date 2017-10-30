@@ -8,6 +8,6 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - RAILS_SERVE_STATIC_FILES=true
+      - RAILS_PRECOMPILE_ASSETS=true
       - RAILS_ENV=production
       - SECRET_KEY_BASE=secret
